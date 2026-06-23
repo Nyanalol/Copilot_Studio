@@ -108,7 +108,7 @@ Como aún no tenemos sistema real, simulamos con una condición sobre el número
 >
 > ⚠️ **Valor como texto, no fórmula:** asegúrate de que el valor sea **texto plano** (`AUR-100245`). Si ves el icono `fx` (Power Fx) en el campo de valor, cámbialo a valor literal; si no, la condición fallará.
 >
-> ℹ️ **Insertar la variable** en un mensaje: teclea `{` o usa el icono `{x}` y elige `NumeroPedido` (no escribas las llaves a mano).
+> 🛑 **Gotcha importante — insertar la variable en un mensaje.** **NO escribas `{NumeroPedido}` a mano.** Si tecleas las llaves como texto, el agente muestra en rojo *"Identificador no reconocido en la expresión 'NumeroPedido'"* y no enlaza el dato. Hazlo así: borra cualquier `{NumeroPedido}` tecleado y usa el icono **`{x}` "Insertar variable"** (o teclea `/`), eligiendo **`NumeroPedido`** de la lista. Cuando está bien, aparece como un **"chip" de color**, no como texto, y el aviso rojo desaparece. Si `NumeroPedido` no sale en la lista, revisa que el nodo **Pregunta** la guarde con ese nombre exacto.
 >
 > 🔎 **Consecuencia de la simulación:** al ser coincidencia **exacta**, solo funcionarán esos dos números. Es intencionado y didáctico: demuestra por qué en producción esto se sustituye por una **acción real** (Fascículo 06) que consulta *cualquier* pedido.
 
