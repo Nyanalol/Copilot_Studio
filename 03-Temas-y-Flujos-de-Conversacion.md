@@ -154,16 +154,36 @@ Al final de las ramas de éxito, añade:
 2. Si **No** → **"Administración de temas" → "Finalizar la conversación"** (*End of conversation*; esto dispara la encuesta de satisfacción).
 3. Si **Sí** → puedes redirigir al inicio con **"Administración de temas" → "Ir a otro tema"** o simplemente cerrar el tema para que el agente vuelva a escuchar.
 
-### Paso 7 · Personaliza Greeting, Fallback y Escalate (temas de sistema)
+### Paso 7 · Personaliza los temas del sistema
 
-1. Ve a **Temas** y arriba cambia a la pestaña/filtro **"Temas del sistema"** (*System topics*). Verás temas como **Conversation Start, Greeting, Fallback, Escalate, End of Conversation…** (los nombres pueden aparecer en inglés aunque el agente esté en español).
-2. **Conversation Start / Greeting:** pon un saludo de marca:
+Los **temas del sistema** vienen creados de fábrica; aquí solo **editas su texto**, no los creas ni los borres.
+
+1. Ve a **Temas** y abre el grupo/lista **"Temas del sistema"**.
+
+> 🗂️ **Nombres reales en la UI en español** (y su función). En tu versión verás:
+>
+> | Nombre en la UI (ES) | Equivalente (EN) | Para qué sirve | ¿Lo tocamos ahora? |
+> |---|---|---|---|
+> | **Inicio de la conversación** | Conversation Start | Saludo inicial | ✅ Sí |
+> | **Alternativa** | Fallback | Cuando NO entiende al usuario | ✅ Sí |
+> | **Remitir a un superior** | Escalate | Escalado a un humano | ✅ Sí (opcional) |
+> | **Fin de la conversación** | End of Conversation | Cierre + encuesta de satisfacción | ➖ Opcional |
+> | **Potenciar conversaciones** | Conversational boosting | Respuestas **generativas** (RAG) | 🔜 Fascículo 05 |
+> | **Al producirse un error** | On Error | Mensaje ante un error técnico | ➖ Opcional |
+> | **Restablecer conversación** | Reset Conversation | Reiniciar el contexto | ➖ No tocar |
+> | **Iniciar sesión** | Sign in | Autenticación del usuario | 🔜 Fascículo 09 |
+> | **Varios temas relacionados** | Multiple Topics Matched | Desambiguar cuando hay varios temas posibles | ➖ Opcional |
+
+2. **Inicio de la conversación** (saludo) → ábrelo, busca el nodo **Mensaje** y pon:
    `¡Hola! Soy AuroraBot 🤖, el asistente de Aurora Store. Puedo ayudarte con pedidos, devoluciones y dudas sobre productos. ¿Qué necesitas?`
-3. **Fallback** (cuando no entiende): que sea útil, no un callejón:
+3. **Alternativa** (cuando no entiende) → edita su **Mensaje** para que sea útil, no un callejón:
    `Mmm, no estoy seguro de haberte entendido. Puedo ayudarte con: 📦 seguimiento de pedidos, 🔄 devoluciones, ❓ dudas de productos. ¿Sobre cuál quieres?`
-   Y ofrece escalar tras 2 intentos fallidos.
-4. **Escalate:** mensaje claro de traspaso:
+4. **Remitir a un superior** (escalado, opcional) → edita su **Mensaje** de traspaso:
    `Te paso con un agente del equipo de Aurora Store. Un momento, por favor… 🙋`
+
+> ⚠️ Dentro de estos temas hay **más nodos y lógica** que en los tuyos. **Cambia solo el texto del Mensaje**; no borres ni reordenes el resto. Si algo te da respeto, déjalo como está.
+>
+> 🔜 **Ojo al de "Potenciar conversaciones":** es el que activa/gestiona las **respuestas generativas** sobre tus fuentes de conocimiento. Lo trabajaremos en el **Fascículo 05** (es la pieza que arregla la alucinación de la política de devoluciones).
 
 ---
 
