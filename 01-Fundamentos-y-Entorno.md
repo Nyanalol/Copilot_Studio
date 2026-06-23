@@ -11,6 +11,8 @@
 
 ---
 
+> 🏢 **¿Tienes licencia de Microsoft 365 Copilot y trabajas en el tenant de tu empresa?** (en vez de una *trial* de Copilot Studio en un tenant limpio). Entonces, además de este fascículo, **lee el** [Anexo 01b](./01b-Anexo-Licencia-M365-Copilot-y-Entorno-Corporativo.md): explica qué cubre tu licencia, qué consume capacidad aparte y **qué entorno elegir** entre los que ya existen en tu organización.
+
 ## 📖 Concepto
 
 ### El vocabulario que vas a usar todo el curso

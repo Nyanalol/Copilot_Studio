@@ -28,6 +28,7 @@ Cada fascículo añade una capa a este agente. Al final tendrás un agente reali
 |---|--------|----------------|------------|
 | 00 | [Introducción y caso de estudio](./00-Introduccion-y-Caso-de-Estudio.md) | Qué es Copilot Studio, cómo funciona el curso, el escenario Aurora Store | Plan mental del proyecto |
 | 01 | [Fundamentos y entorno](./01-Fundamentos-y-Entorno.md) | Conceptos, licencias, Power Platform, entornos, primer acceso | Entorno listo y acceso a Copilot Studio |
+| 01b | [Anexo: licencia M365 Copilot y tenant corporativo](./01b-Anexo-Licencia-M365-Copilot-y-Entorno-Corporativo.md) | Qué cubre M365 Copilot vs Copilot Studio, qué entorno elegir en una empresa | Entorno DEV correcto + capacidad |
 | 02 | [Crea tu primer agente](./02-Crear-tu-Primer-Agente.md) | Crear AuroraBot, anatomía del agente, probarlo | Agente base creado |
 | 03 | [Temas y flujos de conversación](./03-Temas-y-Flujos-de-Conversacion.md) | Topics, trigger phrases, nodos, ramas, "Seguimiento de pedido" | Tema de seguimiento funcionando |
 | 04 | [Entidades, variables y slot filling](./04-Entidades-Variables-y-Slot-Filling.md) | Entidades prebuilt/custom, variables, slot filling, "Devoluciones" | Tema de devoluciones con datos |
