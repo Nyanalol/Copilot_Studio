@@ -98,10 +98,12 @@ Tipos de variable: *String, Boolean, Number, Date time, Table (lista), Record (o
    - Else (resto) → Mensaje genérico de proceso estándar.
 7. **Confirmación / resumen:** Mensaje:
    `Resumen de tu devolución:
-   • Pedido: ${NumeroPedido}
-   • Email: ${Global.EmailCliente}
-   • Motivo: ${MotivoDevolucion}
+   • Pedido: {Topic.NumeroPedido}
+   • Email: {Global.EmailCliente}
+   • Motivo: {Topic.MotivoDevolucion}
    Te enviaremos las instrucciones por email. ¿Confirmas?` (Sí/No)
+
+   > 🛑 Recuerda (visto en el Fascículo 03): inserta las variables con el icono **`{x}`**, nunca a mano. Llevan **prefijo de ámbito**: `Topic.` las de tema y `Global.` las globales (por eso `{Global.EmailCliente}`). Escribirlas sin prefijo da *"identificador no reconocido"*.
 8. Si **Sí** → Mensaje de confirmación + (en el Fascículo 06 aquí llamaremos a una acción que cree la devolución real). Si **No** → escalar o cerrar.
 
 ### Parte E · Observa el slot filling

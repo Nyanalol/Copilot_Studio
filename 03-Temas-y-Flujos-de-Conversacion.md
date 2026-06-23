@@ -98,17 +98,19 @@ Como aún no tenemos sistema real, simulamos con una condición sobre el número
 1. Añade un nodo **Add a condition / Condición**. Crea **3 ramas** (al añadir condiciones se genera la rama *"Todas las demás condiciones"* automáticamente).
 2. Define cada rama según `NumeroPedido`:
    - **Rama 1:** `NumeroPedido` **es igual a** `AUR-100245` → Mensaje:
-     `📦 Tu pedido {NumeroPedido} está EN REPARTO y se entregará hoy antes de las 20:00. Transportista: AuroraExpress. ¿Necesitas algo más?`
+     `📦 Tu pedido {Topic.NumeroPedido} está EN REPARTO y se entregará hoy antes de las 20:00. Transportista: AuroraExpress. ¿Necesitas algo más?`
    - **Rama 2:** `NumeroPedido` **es igual a** `AUR-200111` → Mensaje:
-     `🚚 Tu pedido {NumeroPedido} ha sido ENVIADO y llegará en 2-3 días laborables.`
+     `🚚 Tu pedido {Topic.NumeroPedido} ha sido ENVIADO y llegará en 2-3 días laborables.`
    - **Rama "Todas las demás condiciones" (Else):** Mensaje:
-     `No he podido localizar el pedido {NumeroPedido}. ¿Puedes verificar el número? Si crees que es correcto, te paso con un agente.`
+     `No he podido localizar el pedido {Topic.NumeroPedido}. ¿Puedes verificar el número? Si crees que es correcto, te paso con un agente.`
 
 > ⚠️ **Operador:** para variables de **texto**, Copilot Studio **no ofrece "contiene"** en el desplegable (solo `es igual a`, `no es igual a`, `está en blanco`, `en`…). Por eso usamos **`es igual a`** con el número exacto. El operador `en` significa "está dentro de" y va en sentido inverso: **no lo uses** aquí.
 >
 > ⚠️ **Valor como texto, no fórmula:** asegúrate de que el valor sea **texto plano** (`AUR-100245`). Si ves el icono `fx` (Power Fx) en el campo de valor, cámbialo a valor literal; si no, la condición fallará.
 >
-> 🛑 **Gotcha importante — insertar la variable en un mensaje.** **NO escribas `{NumeroPedido}` a mano.** Si tecleas las llaves como texto, el agente muestra en rojo *"Identificador no reconocido en la expresión 'NumeroPedido'"* y no enlaza el dato. Hazlo así: borra cualquier `{NumeroPedido}` tecleado y usa el icono **`{x}` "Insertar variable"** (o teclea `/`), eligiendo **`NumeroPedido`** de la lista. Cuando está bien, aparece como un **"chip" de color**, no como texto, y el aviso rojo desaparece. Si `NumeroPedido` no sale en la lista, revisa que el nodo **Pregunta** la guarde con ese nombre exacto.
+> 🛑 **Gotcha importante — las variables llevan prefijo de ámbito.** La referencia real **NO es `{NumeroPedido}`**, sino **`{Topic.NumeroPedido}`** (las variables de tema llevan el prefijo **`Topic.`**; las globales, **`Global.`**, p. ej. `{Global.EmailCliente}`). Si escribes `{NumeroPedido}` sin el prefijo, el agente muestra en rojo *"Identificador no reconocido en la expresión 'NumeroPedido'"*.
+>
+> **No lo escribas a mano:** borra lo tecleado y usa el icono **`{x}` "Insertar variable"** (o teclea `/`) y elige **`NumeroPedido`** de la lista → el editor inserta automáticamente **`{Topic.NumeroPedido}`** como un **"chip" de color** y el aviso rojo desaparece. Si no sale en la lista, revisa que el nodo **Pregunta** la guarde con ese nombre exacto.
 >
 > 🔎 **Consecuencia de la simulación:** al ser coincidencia **exacta**, solo funcionarán esos dos números. Es intencionado y didáctico: demuestra por qué en producción esto se sustituye por una **acción real** (Fascículo 06) que consulta *cualquier* pedido.
 
