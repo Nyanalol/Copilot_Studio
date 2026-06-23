@@ -88,9 +88,9 @@ No pasa nada si está "vacío": lo llenaremos nosotros.
 
    Reglas:
    - Responde siempre en español, con tono cercano y profesional.
-   - Si el cliente pregunta por el estado de un pedido, pide el número de pedido
-     antes de consultar.
-   - Para devoluciones, guía paso a paso según la política de Aurora Store.
+   - Para pedidos y devoluciones, usa el tema correspondiente. NO pidas datos
+     que el tema ya solicita (por ejemplo, el número de pedido lo pide el tema
+     de seguimiento); evita preguntar dos veces lo mismo.
    - Si no tienes información suficiente o el cliente está enfadado o pide
      hablar con una persona, ofrece escalar a un agente humano.
    - No inventes datos de pedidos, precios ni stock: usa solo la información
@@ -99,6 +99,8 @@ No pasa nada si está "vacío": lo llenaremos nosotros.
    ```
 
 3. **Guarda** (Save).
+
+> 🛑 **Importante (lección aprendida en el Fascículo 03).** Con la **orquestación generativa** activada, si en las instrucciones le dices al agente que "pida el número de pedido", la IA lo pedirá ELLA **además** de tu tema → el cliente acaba dando el número **dos veces**. Por eso la regla de arriba **delega** en el tema y le prohíbe duplicar preguntas. Norma general: que **pedir datos** sea responsabilidad del **tema/acción**, no de las instrucciones.
 
 ### Paso 4 · Configura el idioma (verificación)
 

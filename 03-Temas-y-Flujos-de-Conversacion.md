@@ -201,6 +201,31 @@ En el panel de pruebas (recarga con **Reset** tras cada cambio):
 
 ---
 
+## 🐞 Resolución de problemas (fallos reales detectados)
+
+Estos dos fallos aparecen casi siempre al probar por primera vez. Si los ves, así se arreglan:
+
+### Fallo 1 · Pide el número de pedido DOS veces
+
+**Síntoma:** preguntas "¿dónde está mi pedido?" → el agente te pide el número con un **texto generativo** (parafraseado) → das el número → y el **tema** te lo pide otra vez con su texto literal.
+
+**Causa:** hay **dos cosas** pidiendo el número: las **instrucciones del agente** (le dijiste que "pida el número de pedido") **y** el nodo Pregunta del tema. Con orquestación generativa, la IA obedece la instrucción y pregunta ella, además del tema.
+
+**Solución:** edita las **Instrucciones** del agente (Información general → Instrucciones) y **quita** la regla que dice que pida el número de pedido. Deja que **solo el tema** lo pida. (Ver el bloque actualizado en el [Fascículo 02](./02-Crear-tu-Primer-Agente.md), Paso 3.) Regla general: **pedir datos es tarea del tema/acción, no de las instrucciones.**
+
+### Fallo 2 · Dices "Sí" al escalado y NO te transfiere
+
+**Síntoma:** a "¿Quieres que te pase con un agente?" respondes `Sí` y el agente salta al cierre ("¿Te puedo ayudar en algo más?") sin transferir.
+
+**Causa:** el **gotcha de la tilde**. La condición compara con `Si` (sin tilde) pero la opción del botón es `Sí` (con tilde) → nunca coincide → se salta la rama de transferir.
+
+**Solución:**
+1. Abre la condición de la rama "Sí" y, en el **valor**, **selecciona la opción del desplegable** (`···`/flecha) para que coja `Sí` con la tilde **exacta**; no lo teclees.
+2. Confirma que **bajo esa rama** está el nodo **"Remitir a un superior"** (Transferir). Si no está, añádelo (*Administración de temas → Transferir conversación*).
+3. Mejor aún: si la pregunta con opciones generó **ramas Sí/No automáticas**, usa esas (evitan el problema de la tilde) y borra la condición manual.
+
+---
+
 ## 💡 Más allá de la doc oficial
 
 - **Trigger phrases vs. orquestación generativa.** En el modo clásico, si dos temas tienen frases parecidas, compiten y a veces gana el equivocado. La **orquestación generativa** (Fascículo 05) resuelve mucho esto usando la **descripción** del tema en lugar de solo frases. En cliente real se suele acabar usando descripciones bien escritas + frases.
