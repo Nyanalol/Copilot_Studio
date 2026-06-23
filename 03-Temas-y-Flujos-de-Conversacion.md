@@ -116,22 +116,47 @@ Como aún no tenemos sistema real, simulamos con una condición sobre el número
 
 ### Paso 5 · Ofrecer escalado en la rama de error
 
-Dentro de la rama "Else":
+Trabajamos **dentro de la rama "Todas las demás condiciones" (Else)** del Paso 4, justo después del mensaje "No he podido localizar el pedido…".
 
-1. Tras el mensaje, añade una **Pregunta** con opciones (botones): `¿Quieres que te pase con un agente?` → opciones **Sí** / **No**.
-2. Si **Sí** → añade nodo **Transfer conversation / Escalate** (escalado a humano).
-3. Si **No** → Mensaje de cierre amable + nodo **End of conversation**.
+#### 5.1 · Pregunta Sí/No (aquí "Opciones de tipo test" SÍ es lo correcto)
+
+1. Pulsa el `+` y añade **"Formular una pregunta"**.
+2. Texto: `¿Quieres que te pase con un agente?`
+3. **Identificar:** déjalo en **"Opciones de tipo test"** (esta vez sí, porque queremos **botones**, no texto libre).
+4. En **"Opciones para el usuario"**, pulsa **`+ Nueva opción`** dos veces y crea exactamente: `Sí` y `No`.
+5. En **"Guardar respuesta del usuario como"**, renombra `Var1` → **`QuiereAgente`** (tipo `choice`).
+
+#### 5.2 · Ramas según la respuesta
+
+> 💡 Al usar una pregunta con opciones, Copilot Studio **suele generar una rama por opción** automáticamente bajo la pregunta. Si las tienes, úsalas directamente. Si **no**, añade un nodo **"Agregar una condición"** comprobando `QuiereAgente`.
+>
+> ⚠️ **Gotcha tilde/sin-tilde:** si usas condición, el valor debe coincidir **exactamente** con la opción. Como la opción es **`Sí`** (con tilde), **no** teclees `Si`: **selecciónalo del desplegable** del campo de valor (`···` o la flecha) para que coja la opción literal. Si no coincide, la rama "Sí" no se cumple nunca.
+
+**Rama "Sí"** → escalar a un humano:
+
+1. Bajo la rama `Sí`, pulsa `+`.
+2. Pasa el ratón por **"Administración de temas"** (submenú `>`).
+3. Elige **"Transferir conversación"** (*Transfer conversation*; en algunas versiones aparece como **"Transferir a un agente"**).
+   - Opcional: añade antes un **Mensaje** `Perfecto, te paso con un compañero del equipo de Aurora Store 🙋`.
+
+> ℹ️ Por ahora basta con poner el nodo de transferencia. **A dónde** va realmente el escalado (cola de agentes, sistema de tickets, Omnichannel…) se configura en el **Fascículo 08 · Handoff**.
+
+**Rama "No" (o "Todas las demás condiciones")** → cerrar con amabilidad:
+
+1. Bajo la rama `No`, pulsa `+` → **"Enviar un mensaje"**: `De acuerdo. Si cambias de idea, aquí estoy 😊`
+2. Pulsa `+` de nuevo → **"Administración de temas" → "Finalizar la conversación"** (*End of conversation*).
 
 ### Paso 6 · Cierre del tema
 
 Al final de las ramas de éxito, añade:
 
-1. Una **Pregunta**: `¿Te puedo ayudar en algo más?` (Sí/No).
-2. Si **No** → **End of conversation** (esto dispara la encuesta de satisfacción).
+1. Una **Pregunta** con opciones (`Sí`/`No`): `¿Te puedo ayudar en algo más?`
+2. Si **No** → **"Administración de temas" → "Finalizar la conversación"** (*End of conversation*; esto dispara la encuesta de satisfacción).
+3. Si **Sí** → puedes redirigir al inicio con **"Administración de temas" → "Ir a otro tema"** o simplemente cerrar el tema para que el agente vuelva a escuchar.
 
 ### Paso 7 · Personaliza Greeting, Fallback y Escalate (temas de sistema)
 
-1. Ve a **Topics → System topics**.
+1. Ve a **Temas** y arriba cambia a la pestaña/filtro **"Temas del sistema"** (*System topics*). Verás temas como **Conversation Start, Greeting, Fallback, Escalate, End of Conversation…** (los nombres pueden aparecer en inglés aunque el agente esté en español).
 2. **Conversation Start / Greeting:** pon un saludo de marca:
    `¡Hola! Soy AuroraBot 🤖, el asistente de Aurora Store. Puedo ayudarte con pedidos, devoluciones y dudas sobre productos. ¿Qué necesitas?`
 3. **Fallback** (cuando no entiende): que sea útil, no un callejón:
